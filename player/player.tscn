@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://ccdsbc42d2ukj"]
+
+[ext_resource type="Texture2D" uid="uid://bknlb75hw4utg" path="res://icon.svg" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://cmopi5khs5y01" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Script" uid="uid://b72b1nb2iwrqx" path="res://player/state_machine/player_state_machine.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://mesvvpsk5vvc" path="res://player/state_machine/states/idle.gd" id="4_yw30f"]
+[ext_resource type="Script" uid="uid://cb7u5w3k6j4rq" path="res://player/state_machine/states/walk.gd" id="5_qjkh3"]
+[ext_resource type="Script" uid="uid://dldx5vkl2gn47" path="res://player/state_machine/states/jump.gd" id="6_boad6"]
+[ext_resource type="Script" uid="uid://cd8txgqa6pkx" path="res://player/state_machine/states/fall.gd" id="7_rgyib"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbuoi"]
+size = Vector2(128, 128)
+
+[node name="Player" type="CharacterBody2D" unique_id=1383694304]
+collision_layer = 2
+script = ExtResource("1_rkbax")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=400059122]
+texture = ExtResource("1_oul6g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=990100114]
+shape = SubResource("RectangleShape2D_xbuoi")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1042612041]
+zoom = Vector2(0.5, 0.5)
+
+[node name="PlayerStateMachine" type="Node2D" parent="." unique_id=162832397]
+script = ExtResource("3_g1dw6")
+
+[node name="Idle" type="Node2D" parent="PlayerStateMachine" unique_id=1677240430]
+unique_name_in_owner = true
+script = ExtResource("4_yw30f")
+
+[node name="Walk" type="Node2D" parent="PlayerStateMachine" unique_id=2056285377]
+unique_name_in_owner = true
+script = ExtResource("5_qjkh3")
+
+[node name="Jump" type="Node2D" parent="PlayerStateMachine" unique_id=55547843]
+unique_name_in_owner = true
+script = ExtResource("6_boad6")
+
+[node name="Fall" type="Node2D" parent="PlayerStateMachine" unique_id=351093516]
+unique_name_in_owner = true
+script = ExtResource("7_rgyib")

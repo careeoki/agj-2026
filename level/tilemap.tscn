@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://wo01w60tqp01"]
+
+[ext_resource type="Texture2D" uid="uid://bkmhs17tv71d0" path="res://assets/tiles/test.png" id="1_cw3t1"]
+[ext_resource type="PackedScene" uid="uid://cdy0sljdcopnc" path="res://objects/coin.tscn" id="2_bcpcr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcpcr"]
+texture = ExtResource("1_cw3t1")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_x3j8w"]
+scenes/1/scene = ExtResource("2_bcpcr")
+
+[sub_resource type="TileSet" id="TileSet_xbuoi"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/1 = SubResource("TileSetAtlasSource_bcpcr")
+sources/2 = SubResource("TileSetScenesCollectionSource_x3j8w")
+
+[node name="Tilemap" type="TileMapLayer" unique_id=882706220]
+tile_set = SubResource("TileSet_xbuoi")
