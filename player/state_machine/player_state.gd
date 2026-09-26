@@ -9,6 +9,7 @@ static var direction: Vector2
 @onready var walk: PlayerWalkState = %Walk
 @onready var jump: PlayerJumpState = %Jump
 @onready var fall: PlayerFallState = %Fall
+@onready var cutscene: PlayerCutsceneState = %Cutscene
 
 
 func _ready() -> void:

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Subscription" format=3 uid="uid://4txrwlb1uo58"]
+
+[ext_resource type="Script" uid="uid://d0usfiju7g5k0" path="res://subscriptions/scripts/subscription.gd" id="1_a8svk"]
+
+[resource]
+script = ExtResource("1_a8svk")
+sub_name = "Legs+"
+desc = "You can operate your legs better, increasing your speed!"
+time = 0.5
+cost = 5
+tag = "run"
+metadata/_custom_type_script = "uid://d0usfiju7g5k0"

@@ -1,25 +1,25 @@
-[gd_scene format=3 uid="uid://cdy0sljdcopnc"]
+[gd_scene format=3 uid="uid://vplgvsuhkpa3"]
 
-[ext_resource type="Script" uid="uid://gd6lb7d008t3" path="res://objects/scripts/coin.gd" id="1_je4cw"]
-[ext_resource type="Texture2D" uid="uid://dcq6pismuss62" path="res://assets/objects/coins.png" id="2_je4cw"]
+[ext_resource type="Script" uid="uid://gd6lb7d008t3" path="res://objects/scripts/coin.gd" id="1_6wq07"]
+[ext_resource type="Texture2D" uid="uid://dcq6pismuss62" path="res://assets/objects/coins.png" id="2_vu06g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xbuoi"]
 radius = 42.107006
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1o7s2"]
-atlas = ExtResource("2_je4cw")
+atlas = ExtResource("2_vu06g")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iwokp"]
-atlas = ExtResource("2_je4cw")
+atlas = ExtResource("2_vu06g")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hyi47"]
-atlas = ExtResource("2_je4cw")
+atlas = ExtResource("2_vu06g")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_osa5c"]
-atlas = ExtResource("2_je4cw")
+atlas = ExtResource("2_vu06g")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xbuoi"]
@@ -42,8 +42,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Coin" type="Node2D" unique_id=1687651285]
-script = ExtResource("1_je4cw")
+[node name="GoldCoin" type="Node2D" unique_id=1687651285]
+script = ExtResource("1_6wq07")
+value = 2
 
 [node name="Area2D" type="Area2D" parent="." unique_id=293510938]
 collision_layer = 0
@@ -53,7 +54,8 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_xbuoi")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=388475636]
-scale = Vector2(0.9, 0.9)
+modulate = Color(0.94249535, 0.74051017, 0.3501307, 1)
+scale = Vector2(1.1, 1.1)
 sprite_frames = SubResource("SpriteFrames_xbuoi")
 autoplay = "default"
 frame = 2

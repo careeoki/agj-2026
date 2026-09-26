@@ -5,11 +5,12 @@
 [ext_resource type="Script" uid="uid://b72b1nb2iwrqx" path="res://player/state_machine/player_state_machine.gd" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://mesvvpsk5vvc" path="res://player/state_machine/states/idle.gd" id="4_yw30f"]
 [ext_resource type="Script" uid="uid://cb7u5w3k6j4rq" path="res://player/state_machine/states/walk.gd" id="5_qjkh3"]
+[ext_resource type="Script" uid="uid://8hi20hksv5f4" path="res://player/state_machine/states/cutscene.gd" id="5_rgyib"]
 [ext_resource type="Script" uid="uid://dldx5vkl2gn47" path="res://player/state_machine/states/jump.gd" id="6_boad6"]
 [ext_resource type="Script" uid="uid://cd8txgqa6pkx" path="res://player/state_machine/states/fall.gd" id="7_rgyib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbuoi"]
-size = Vector2(128, 128)
+size = Vector2(96, 116)
 
 [node name="Player" type="CharacterBody2D" unique_id=1383694304]
 collision_layer = 2
@@ -19,10 +20,16 @@ script = ExtResource("1_rkbax")
 texture = ExtResource("1_oul6g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=990100114]
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_xbuoi")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1042612041]
 zoom = Vector2(0.5, 0.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 15.0
+drag_vertical_enabled = true
+drag_top_margin = 1.0
+drag_right_margin = 1.0
 
 [node name="PlayerStateMachine" type="Node2D" parent="." unique_id=162832397]
 script = ExtResource("3_g1dw6")
@@ -31,14 +38,23 @@ script = ExtResource("3_g1dw6")
 unique_name_in_owner = true
 script = ExtResource("4_yw30f")
 
+[node name="Cutscene" type="Node2D" parent="PlayerStateMachine" unique_id=1135162647]
+unique_name_in_owner = true
+script = ExtResource("5_rgyib")
+
 [node name="Walk" type="Node2D" parent="PlayerStateMachine" unique_id=2056285377]
 unique_name_in_owner = true
 script = ExtResource("5_qjkh3")
+speed = 450.0
+accel = 30.0
+skid_accel = 60.0
 
 [node name="Jump" type="Node2D" parent="PlayerStateMachine" unique_id=55547843]
 unique_name_in_owner = true
 script = ExtResource("6_boad6")
+jump_velocity = 900.0
 
 [node name="Fall" type="Node2D" parent="PlayerStateMachine" unique_id=351093516]
 unique_name_in_owner = true
 script = ExtResource("7_rgyib")
+gravity = 60.0

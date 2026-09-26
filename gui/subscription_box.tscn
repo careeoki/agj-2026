@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://0ha7moh00yed"]
+
+[ext_resource type="Script" uid="uid://cicwu4peqv807" path="res://gui/subscription_box.gd" id="1_i1pnc"]
+
+[node name="SubscriptionBox" type="PanelContainer" unique_id=862097918]
+anchors_preset = -1
+anchor_right = 0.26041666
+anchor_bottom = 0.14969136
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i1pnc")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1735388491]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer" unique_id=1474052544]
+layout_mode = 2
+text = "Name"
+
+[node name="DescLabel" type="Label" parent="VBoxContainer" unique_id=138219252]
+layout_mode = 2
+text = "Description"
+
+[node name="StatsLabel" type="Label" parent="VBoxContainer" unique_id=884836626]
+layout_mode = 2
+text = "5$ every 0.1s"
+
+[node name="SubButton" type="Button" parent="VBoxContainer" unique_id=1474231210]
+layout_mode = 2
+text = "Subscribe!!!"
+
+[connection signal="pressed" from="VBoxContainer/SubButton" to="." method="_on_sub_button_pressed"]

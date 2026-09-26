@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bkmhs17tv71d0" path="res://assets/tiles/test.png" id="1_cw3t1"]
 [ext_resource type="PackedScene" uid="uid://cdy0sljdcopnc" path="res://objects/coin.tscn" id="2_bcpcr"]
+[ext_resource type="PackedScene" uid="uid://vplgvsuhkpa3" path="res://objects/gold_coin.tscn" id="3_x3j8w"]
+[ext_resource type="PackedScene" uid="uid://dvx523s0nluq6" path="res://objects/red_coin.tscn" id="4_mbccy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcpcr"]
 texture = ExtResource("1_cw3t1")
@@ -14,7 +16,10 @@ texture_region_size = Vector2i(128, 128)
 1:1/0 = 0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_x3j8w"]
+resource_name = "Coins"
 scenes/1/scene = ExtResource("2_bcpcr")
+scenes/2/scene = ExtResource("3_x3j8w")
+scenes/3/scene = ExtResource("4_mbccy")
 
 [sub_resource type="TileSet" id="TileSet_xbuoi"]
 tile_size = Vector2i(128, 128)

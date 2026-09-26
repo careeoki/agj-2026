@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://2vlc2yxttf1n"]
+
+[ext_resource type="Script" uid="uid://wlqbhq625ue0" path="res://player/sub_timer.gd" id="1_7gh7o"]
+
+[node name="SubTimer" type="Timer" unique_id=1651740842]
+script = ExtResource("1_7gh7o")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

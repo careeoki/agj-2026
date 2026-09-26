@@ -5,10 +5,12 @@ class_name Player extends CharacterBody2D
 
 func _ready() -> void:
 	player_state_machine.init(self)
+	PlayerManager.player = self
+	PlayerManager.spawn_pos = global_position
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	#if not is_on_floor():
+		#velocity += get_gravity() * delta
 	
 	
 	move_and_slide()

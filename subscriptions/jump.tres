@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Subscription" format=3 uid="uid://0vh3qi6p8txn"]
+
+[ext_resource type="Script" uid="uid://d0usfiju7g5k0" path="res://subscriptions/scripts/subscription.gd" id="1_5lhsh"]
+
+[resource]
+script = ExtResource("1_5lhsh")
+sub_name = "Jump"
+desc = "Allows you to jump!"
+cost = 5
+tag = "jump"
+metadata/_custom_type_script = "uid://d0usfiju7g5k0"
