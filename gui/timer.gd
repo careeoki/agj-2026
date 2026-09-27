@@ -1,5 +1,7 @@
 extends HBoxContainer
 
+signal timer_timeout
+
 @onready var timer_icon: TextureRect = $TimerIcon
 @onready var time_label: Label = $TimeLabel
 @onready var timer: Timer = $Timer
@@ -19,9 +21,11 @@ func _on_timer_timeout() -> void:
 		return
 	Hud.shop.open_shop()
 	PlayerManager.return_player_to_spawn()
-	
+	timer_timeout.emit()
 
 func add_time(time_added: float):
+	if timer.time_left == 0:
+		return
 	var new_time = timer.wait_time + time_added
 	timer.wait_time = timer.time_left + time_added
 	timer.stop()

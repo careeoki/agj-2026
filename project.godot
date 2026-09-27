@@ -58,6 +58,13 @@ jump={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Solid"
+2d_physics/layer_2="Player"
+2d_physics/layer_4="HurtBox"
+2d_physics/layer_5="Water"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

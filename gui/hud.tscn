@@ -85,6 +85,13 @@ text = "0:00"
 wait_time = 5.0
 one_shot = true
 
+[node name="StateLabel" type="Label" parent="Control" unique_id=99095561]
+layout_mode = 0
+offset_left = 889.0
+offset_top = 6.0
+offset_right = 929.0
+offset_bottom = 29.0
+
 [node name="GameOver" type="VBoxContainer" parent="." unique_id=946107376]
 visible = false
 anchors_preset = 8

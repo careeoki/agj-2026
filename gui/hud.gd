@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var shop: ScrollContainer = $Control/Shop
 @onready var game_over: VBoxContainer = $GameOver
 @onready var payments_box: VBoxContainer = $Control/VBoxContainer/PaymentsBox
+@onready var state_label: Label = $Control/StateLabel
 
 var payments: Array[String]
 @export var b_offset: Vector2 = Vector2(0, 10)

@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_4jd6v")
 sub_name = "FlipperBox"
-desc = "Learn to swim"
+desc = "Learn to swim, and increase your swimming power."
 time = 3.0
-cost = 5
+cost = 10
 tag = "swim"
 metadata/_custom_type_script = "uid://d0usfiju7g5k0"

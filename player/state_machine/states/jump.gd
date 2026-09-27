@@ -29,7 +29,7 @@ func process(_delta: float) -> PlayerState:
 	return null
 
 func physics_process(_delta: float) -> PlayerState:
-	player.velocity.y += 40
+	player.velocity.y += player.target_gravity
 	player.update_velocity(direction.x * player.target_speed, player.target_accel)
 	if player.velocity.y > 0:
 		return fall

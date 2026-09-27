@@ -38,7 +38,7 @@ func process(_delta: float) -> PlayerState:
 	return null
 
 func physics_process(_delta: float) -> PlayerState:
-	player.velocity.y += 60
+	player.velocity.y += player.target_gravity + 10
 	player.update_velocity(direction.x * player.target_speed, player.target_accel)
 	if player.is_on_floor():
 		player.air_jumps = player.max_air_jumps

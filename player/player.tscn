@@ -8,9 +8,13 @@
 [ext_resource type="Script" uid="uid://8hi20hksv5f4" path="res://player/state_machine/states/cutscene.gd" id="5_rgyib"]
 [ext_resource type="Script" uid="uid://dldx5vkl2gn47" path="res://player/state_machine/states/jump.gd" id="6_boad6"]
 [ext_resource type="Script" uid="uid://cd8txgqa6pkx" path="res://player/state_machine/states/fall.gd" id="7_rgyib"]
+[ext_resource type="Script" uid="uid://d1jcqqfk1u3d3" path="res://player/state_machine/states/swim.gd" id="9_hg6s5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbuoi"]
 size = Vector2(96, 116)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xbuoi"]
+radius = 42.190044
 
 [node name="Player" type="CharacterBody2D" unique_id=1383694304]
 collision_layer = 2
@@ -27,7 +31,7 @@ position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_xbuoi")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1042612041]
-position = Vector2(0, -245)
+position = Vector2(0, -205)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0
@@ -60,3 +64,27 @@ jump_velocity = 860.0
 unique_name_in_owner = true
 script = ExtResource("7_rgyib")
 gravity = 60.0
+
+[node name="Swim" type="Node2D" parent="PlayerStateMachine" unique_id=1328087189]
+unique_name_in_owner = true
+script = ExtResource("9_hg6s5")
+
+[node name="WaterCheck" type="Area2D" parent="." unique_id=731513471]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterCheck" unique_id=1595578777]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_xbuoi")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=558229104]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1876698828]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_xbuoi")
+
+[connection signal="body_entered" from="WaterCheck" to="." method="_on_water_check_body_entered"]
+[connection signal="body_exited" from="WaterCheck" to="." method="_on_water_check_body_exited"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

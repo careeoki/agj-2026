@@ -39,6 +39,7 @@ func change_state(new_state: PlayerState) -> void:
 	
 	states.push_front(new_state)
 	current_state.enter()
+	Hud.state_label.text = current_state.name
 	states.resize(3)
 	
 	pass

@@ -21,7 +21,7 @@ func process(_delta: float) -> PlayerState:
 	return null
 
 func physics_process(_delta: float) -> PlayerState:
-	player.update_velocity(0, player.target_accel * 1.2)
+	player.update_velocity(0, player.target_accel * 1.5)
 	if direction.x:
 		return walk
 	if not player.is_on_floor():

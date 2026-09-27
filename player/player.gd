@@ -5,19 +5,27 @@ class_name Player extends CharacterBody2D
 @export var default_speed: float = 400
 @export var default_jump: float = 860
 @export var default_accel: float = 10
+@export var default_gravity: float = 40
+@export var default_swim_power: float = 10
 
 var max_air_jumps: int = 0
 var air_jumps: int = 0
 var target_speed
 var target_accel
 var target_jump
+var target_gravity
+var target_swim_power
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
+
+var underwater: bool = false
 
 func _ready() -> void:
 	target_speed = default_speed
 	target_accel = default_accel
+	target_gravity = default_gravity
 	target_jump = 0
+	target_swim_power = default_swim_power
 	player_state_machine.init(self)
 	PlayerManager.player = self
 	PlayerManager.spawn_pos = global_position
@@ -38,6 +46,8 @@ func _physics_process(delta: float) -> void:
 func update_target_speed():
 	target_speed = default_speed
 	target_accel = default_accel
+	target_jump = default_jump
+	target_swim_power = default_swim_power
 	for r in PlayerManager.sub_tags.count("run"):
 		target_speed += 200
 	for r in PlayerManager.sub_tags.count("extra_jump"):
@@ -50,6 +60,8 @@ func update_target_speed():
 			target_jump += 100
 	for a in PlayerManager.sub_tags.count("accel"):
 		target_accel += 15
+	for s in PlayerManager.sub_tags.count("swim"):
+		target_swim_power += 10
 
 func update_velocity(_velocity: float, _accel) -> void:
 	velocity.x = move_toward(velocity.x, _velocity, _accel)
@@ -59,6 +71,34 @@ func reset_stat_changes():
 	target_speed = default_speed
 	target_jump = default_jump
 	target_accel = default_accel
+	target_gravity = default_gravity
+	target_swim_power = default_swim_power
 	
 	max_air_jumps = 0
 	air_jumps = 0
+
+
+func _on_water_check_body_entered(_body: Node2D) -> void:
+	print("in water")
+
+	if PlayerManager.sub_tags.has("swim"):
+		underwater = true
+		player_state_machine.change_state(player_state_machine.states[0].swim)
+		target_gravity = 5
+	else:
+		die()
+
+
+func _on_water_check_body_exited(_body: Node2D) -> void:
+	target_gravity = default_gravity
+	underwater = false
+
+
+func _on_hit_box_body_entered(_body: Node2D) -> void:
+	die()
+
+func die():
+	PlayerManager.add_money(-50)
+	Hud.add_payment_text(50, "Medical Bills")
+	Hud.timer.timer.stop()
+	Hud.timer._on_timer_timeout()

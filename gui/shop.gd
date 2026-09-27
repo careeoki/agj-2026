@@ -1,15 +1,16 @@
 extends ScrollContainer
 const SUBSCRIPTION_BOX = preload("uid://0ha7moh00yed")
 
-var max_size: int = 100
+var max_size: int = 3
 var data: Array[Subscription]
-@onready var v_box_container: VBoxContainer = $VBoxContainer
+@onready var vbox: VBoxContainer = $VBoxContainer
 
 func _ready() -> void:
 	hide()
 	create_shop_data()
 
 func open_shop():
+	create_shop_data()
 	show()
 
 func create_shop_data():
@@ -21,17 +22,20 @@ func create_shop_data():
 		
 		data_array.append(load(file_name))
 	
-	print(data_array)
+	data_array.shuffle()
 	if max_size > 0 and data_array.size() > max_size:
 		data_array.resize(max_size)
 	data = data_array
 	update_inventory()
 
 func update_inventory() -> void:
+	if vbox.get_children().size() > 0:
+		for c in vbox.get_children():
+			c.queue_free()
 	for s in data:
 		var new_slot = SUBSCRIPTION_BOX.instantiate()
 		new_slot.data = s
-		v_box_container.add_child(new_slot)
+		vbox.add_child(new_slot)
 		new_slot.subbed.connect(_on_subbed)
 		
 	
