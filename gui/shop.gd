@@ -44,5 +44,5 @@ func update_inventory() -> void:
 
 func _on_subbed():
 	hide()
-	Hud.timer.timer.start()
+	Hud.timer.start_timer()
 	PlayerManager.player_exit_cutscene()

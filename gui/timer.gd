@@ -6,6 +6,8 @@ signal timer_timeout
 @onready var time_label: Label = $TimeLabel
 @onready var timer: Timer = $Timer
 
+var additional_time: float = 0
+
 func _ready() -> void:
 	PlayerManager.data_reset.connect(_on_data_reset)
 	timer.start()
@@ -25,6 +27,7 @@ func _on_timer_timeout() -> void:
 	
 
 func add_time(time_added: float):
+	additional_time += time_added
 	if timer.time_left == 0:
 		return
 	var new_time = timer.wait_time + time_added
@@ -34,4 +37,8 @@ func add_time(time_added: float):
 	timer.wait_time = new_time
 	
 func _on_data_reset():
+	timer.start()
+
+func start_timer():
+	timer.wait_time = 5 + additional_time
 	timer.start()

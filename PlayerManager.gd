@@ -8,7 +8,7 @@ var player: Player
 var spawn_pos: Vector2
 var money: int = 0
 
-var subscriptions: Array[Subscription]
+var subscriptions: Array[Timer]
 var sub_tags: Array[String]
 
 func reset_data():
@@ -25,15 +25,20 @@ func reset_data():
 	data_reset.emit()
 
 func add_new_sub(data: Subscription):
-	if subscriptions.has(data):
-		subscriptions.get(subscriptions.find(data)).cost += data.cost
+	var _cost = data.cost
+	if sub_tags.has(data.tag):
+		for s in subscriptions:
+			if s.data == data:
+				s.additional_cost += _cost + round(s.additional_cost / 4)
+				print("found match")
 		sub_tags.append(data.tag)
 	else:
-		subscriptions.append(data)
+		
 		sub_tags.append(data.tag)
 		var new_sub = SUB_TIMER.instantiate()
 		new_sub.data = data
 		add_child(new_sub)
+		subscriptions.append(new_sub)
 
 func return_player_to_spawn():
 	player.global_position = spawn_pos

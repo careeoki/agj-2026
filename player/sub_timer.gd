@@ -1,6 +1,7 @@
 extends Timer
 
 var data: Subscription
+var additional_cost: int = 0
 
 func _ready() -> void:
 	Hud.timer.timer_timeout.connect(_on_timer_timeout)
@@ -9,8 +10,8 @@ func _ready() -> void:
 	start()
 
 func _on_timeout() -> void:
-	PlayerManager.add_money(-data.cost)
-	Hud.call_deferred("add_payment_text", data.cost, data.sub_name)
+	PlayerManager.add_money(-(data.cost + additional_cost))
+	Hud.call_deferred("add_payment_text", data.cost + additional_cost, data.sub_name)
 
 func _on_timer_timeout():
 	stop()

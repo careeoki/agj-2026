@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://8hi20hksv5f4" path="res://player/state_machine/states/cutscene.gd" id="5_rgyib"]
 [ext_resource type="Script" uid="uid://dldx5vkl2gn47" path="res://player/state_machine/states/jump.gd" id="6_boad6"]
 [ext_resource type="Script" uid="uid://cd8txgqa6pkx" path="res://player/state_machine/states/fall.gd" id="7_rgyib"]
+[ext_resource type="Script" uid="uid://5137llut0xti" path="res://player/state_machine/states/dash.gd" id="8_8t03j"]
 [ext_resource type="Script" uid="uid://d1jcqqfk1u3d3" path="res://player/state_machine/states/swim.gd" id="9_hg6s5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbuoi"]
@@ -59,6 +60,10 @@ skid_accel = 60.0
 unique_name_in_owner = true
 script = ExtResource("6_boad6")
 jump_velocity = 860.0
+
+[node name="Dash" type="Node2D" parent="PlayerStateMachine" unique_id=1515883632]
+unique_name_in_owner = true
+script = ExtResource("8_8t03j")
 
 [node name="Fall" type="Node2D" parent="PlayerStateMachine" unique_id=351093516]
 unique_name_in_owner = true

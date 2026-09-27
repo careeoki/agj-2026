@@ -2,11 +2,12 @@ class_name Player extends CharacterBody2D
 
 @onready var player_state_machine: PlayerStateMachine = $PlayerStateMachine
 
-@export var default_speed: float = 400
-@export var default_jump: float = 900
-@export var default_accel: float = 10
+@export var default_speed: float = 450
+@export var default_jump: float = 850
+@export var default_accel: float = 15
 @export var default_gravity: float = 40
 @export var default_swim_power: float = 10
+@export var default_dash: float = 500
 
 var max_air_jumps: int = 0
 var air_jumps: int = 0
@@ -14,6 +15,7 @@ var target_speed
 var target_accel
 var target_jump
 var target_gravity
+var target_dash
 var target_swim_power
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
@@ -50,11 +52,12 @@ func update_target_speed(): #this was not working correctly for the past few hou
 	target_swim_power = default_swim_power
 	max_air_jumps = 0
 	for r in PlayerManager.sub_tags.count("run"):
-		target_speed += 100
+		target_speed += 120
 	for r in PlayerManager.sub_tags.count("extra_jump"):
 		max_air_jumps += 1
 	air_jumps = max_air_jumps
-	target_jump = default_jump + 100 * (PlayerManager.sub_tags.count("jump") - 1)
+	target_jump = default_jump + 140 * (PlayerManager.sub_tags.count("jump") - 1)
+	target_dash = default_dash + 130 * (PlayerManager.sub_tags.count("dash") - 1)
 	print(PlayerManager.sub_tags.count("jump"))
 		
 	for a in PlayerManager.sub_tags.count("accel"):

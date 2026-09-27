@@ -6,7 +6,7 @@
 script = ExtResource("1_rgimo")
 sub_name = "Jump Cloud Storage"
 desc = "Allows you to jump again in the air. (If you can actually jump)"
-time = 2.0
+time = 2.5
 cost = 3
 tag = "extra_jump"
 metadata/_custom_type_script = "uid://d0usfiju7g5k0"

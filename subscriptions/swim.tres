@@ -7,6 +7,6 @@ script = ExtResource("1_4jd6v")
 sub_name = "HelloFish"
 desc = "Learn to swim, and increase your swimming power."
 time = 3.0
-cost = 10
+cost = 7
 tag = "swim"
 metadata/_custom_type_script = "uid://d0usfiju7g5k0"

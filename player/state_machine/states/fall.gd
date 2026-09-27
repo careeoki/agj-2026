@@ -25,12 +25,13 @@ func handle_input(_event: InputEvent) -> PlayerState:
 	if coyote_timer > 0:
 		if _event.is_action_pressed("jump") and PlayerManager.sub_tags.has("jump"):
 			return jump
-	
+	if _event.is_action_pressed("attack") and PlayerManager.sub_tags.has("dash"):
+		return dash
 	if _event.is_action_released("jump") and player.velocity.y < 0:
 		player.velocity.y *= 0.5
 	if _event.is_action_pressed("jump") and PlayerManager.sub_tags.has("extra_jump") and player.air_jumps > 0:
 		player.air_jumps -= 1
-		player.velocity.y = -player.target_jump * 0.8
+		player.velocity.y = -player.target_jump * 0.9
 		player.sprite.scale = Vector2(0.7, 1.3)
 	return null
 

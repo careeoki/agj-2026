@@ -15,7 +15,7 @@ var is_subbed: bool = false
 func _ready() -> void:
 	name_label.text = data.sub_name
 	desc_label.text = data.desc
-	stats_label.text = str(data.cost) + "$ every " + str(data.time) + "s"
+	stats_label.text = "-" + str(data.cost) + "$ every " + str(data.time) + "s"
 	sub_icon.texture = load("res://assets/gui/sub_icons/" + data.tag + ".png")
 
 

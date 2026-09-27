@@ -6,6 +6,7 @@ func init() -> void:
 	pass
 
 func enter() -> void:
+	player.air_jumps = player.max_air_jumps
 	pass
 
 func exit() -> void:

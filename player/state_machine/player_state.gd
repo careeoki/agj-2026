@@ -11,6 +11,7 @@ static var direction: Vector2
 @onready var fall: PlayerFallState = %Fall
 @onready var cutscene: PlayerCutsceneState = %Cutscene
 @onready var swim: PlayerSwimState = %Swim
+@onready var dash: Node2D = %Dash
 
 
 func _ready() -> void:
