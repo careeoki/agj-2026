@@ -30,6 +30,7 @@ func handle_input(_event: InputEvent) -> PlayerState:
 	if _event.is_action_released("jump") and player.velocity.y < 0:
 		player.velocity.y *= 0.5
 	if _event.is_action_pressed("jump") and PlayerManager.sub_tags.has("extra_jump") and player.air_jumps > 0:
+		player.air_jump_poof()
 		player.air_jumps -= 1
 		player.velocity.y = -player.target_jump * 0.9
 		player.sprite.scale = Vector2(0.7, 1.3)
@@ -39,9 +40,11 @@ func process(_delta: float) -> PlayerState:
 	return null
 
 func physics_process(_delta: float) -> PlayerState:
-	player.velocity.y += player.target_gravity + 10
+	if player.velocity.y < 2000:
+		player.velocity.y += player.target_gravity + 10
 	player.update_velocity(direction.x * player.target_speed, player.target_accel)
 	if player.is_on_floor():
 		player.air_jumps = player.max_air_jumps
+		player.sprite.scale = Vector2(1.3, 0.7)
 		return idle
 	return null

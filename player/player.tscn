@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cmopi5khs5y01" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Texture2D" uid="uid://ck7afhugtsver" path="res://assets/player/idle.png" id="2_rgyib"]
 [ext_resource type="Script" uid="uid://b72b1nb2iwrqx" path="res://player/state_machine/player_state_machine.gd" id="3_g1dw6"]
+[ext_resource type="Texture2D" uid="uid://dehyx7t7pxsi2" path="res://assets/player/jump.png" id="3_kb6p2"]
 [ext_resource type="Script" uid="uid://mesvvpsk5vvc" path="res://player/state_machine/states/idle.gd" id="4_yw30f"]
 [ext_resource type="Script" uid="uid://cb7u5w3k6j4rq" path="res://player/state_machine/states/walk.gd" id="5_qjkh3"]
 [ext_resource type="Script" uid="uid://8hi20hksv5f4" path="res://player/state_machine/states/cutscene.gd" id="5_rgyib"]
@@ -10,6 +11,29 @@
 [ext_resource type="Script" uid="uid://cd8txgqa6pkx" path="res://player/state_machine/states/fall.gd" id="7_rgyib"]
 [ext_resource type="Script" uid="uid://5137llut0xti" path="res://player/state_machine/states/dash.gd" id="8_8t03j"]
 [ext_resource type="Script" uid="uid://d1jcqqfk1u3d3" path="res://player/state_machine/states/swim.gd" id="9_hg6s5"]
+[ext_resource type="AudioStream" uid="uid://do28al2qpqkn8" path="res://assets/sounds/jump.wav" id="11_2ieo8"]
+[ext_resource type="AudioStream" uid="uid://rm63cfgtcaxb" path="res://assets/sounds/air_jump.wav" id="12_ebec5"]
+[ext_resource type="AudioStream" uid="uid://b4rqnvps8ptvn" path="res://assets/sounds/hurt.wav" id="13_yllr7"]
+[ext_resource type="AudioStream" uid="uid://57yxij51i32l" path="res://assets/sounds/splash.wav" id="15_wodsf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xbuoi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rgyib")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_kb6p2")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbuoi"]
 size = Vector2(96, 116)
@@ -21,10 +45,11 @@ radius = 42.190044
 collision_layer = 2
 script = ExtResource("1_rkbax")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=400059122]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=234401019]
 z_index = 1
 position = Vector2(0, 64)
-texture = ExtResource("2_rgyib")
+sprite_frames = SubResource("SpriteFrames_xbuoi")
+animation = &"jump"
 offset = Vector2(0, -75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=990100114]
@@ -32,7 +57,7 @@ position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_xbuoi")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1042612041]
-position = Vector2(0, -205)
+position = Vector2(0, -120)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 12.0
@@ -89,6 +114,20 @@ collision_mask = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1876698828]
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_xbuoi")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=72681925]
+stream = ExtResource("11_2ieo8")
+
+[node name="AirJumpSound" type="AudioStreamPlayer2D" parent="." unique_id=1028188553]
+stream = ExtResource("12_ebec5")
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=1837295370]
+stream = ExtResource("13_yllr7")
+volume_db = 6.0
+
+[node name="SplashSound" type="AudioStreamPlayer2D" parent="." unique_id=435272867]
+stream = ExtResource("15_wodsf")
+volume_db = -4.0
 
 [connection signal="body_entered" from="WaterCheck" to="." method="_on_water_check_body_entered"]
 [connection signal="body_exited" from="WaterCheck" to="." method="_on_water_check_body_exited"]

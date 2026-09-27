@@ -1,6 +1,11 @@
 class_name Player extends CharacterBody2D
+const AIR_JUMP_POOF = preload("uid://b8r02rco7ph8b")
 
 @onready var player_state_machine: PlayerStateMachine = $PlayerStateMachine
+@onready var jump_sound: AudioStreamPlayer2D = $JumpSound
+@onready var air_jump_sound: AudioStreamPlayer2D = $AirJumpSound
+@onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
+@onready var splash_sound: AudioStreamPlayer2D = $SplashSound
 
 @export var default_speed: float = 450
 @export var default_jump: float = 850
@@ -17,10 +22,11 @@ var target_jump
 var target_gravity
 var target_dash
 var target_swim_power
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var camera: Camera2D = $Camera2D
 
 var underwater: bool = false
+var current_direction: int = 1
 
 func _ready() -> void:
 	target_speed = default_speed
@@ -37,6 +43,8 @@ func _physics_process(delta: float) -> void:
 		#velocity += get_gravity() * delta
 	sprite.scale.x = move_toward(sprite.scale.x, 1, 1.2 * delta)
 	sprite.scale.y = move_toward(sprite.scale.y, 1, 1.2 * delta)
+	if player_state_machine.states[0].direction.x != current_direction and not player_state_machine.states[0].direction.x == 0:
+		change_direction()
 	
 	if not is_on_floor():
 		camera.drag_vertical_enabled = true
@@ -44,6 +52,14 @@ func _physics_process(delta: float) -> void:
 		camera.drag_vertical_enabled = false
 	
 	move_and_slide()
+
+func change_direction():
+	if current_direction == -1:
+		sprite.flip_h = false
+		current_direction = 1
+	else:
+		sprite.flip_h = true
+		current_direction = -1
 
 func update_target_speed(): #this was not working correctly for the past few hours and i did not know.
 	target_speed = default_speed
@@ -82,7 +98,7 @@ func reset_stat_changes():
 
 func _on_water_check_body_entered(_body: Node2D) -> void:
 	print("in water")
-
+	splash_sound.play()
 	if PlayerManager.sub_tags.has("swim"):
 		underwater = true
 		player_state_machine.change_state(player_state_machine.states[0].swim)
@@ -100,7 +116,30 @@ func _on_hit_box_body_entered(_body: Node2D) -> void:
 	die()
 
 func die():
+	play_hurt()
 	PlayerManager.add_money(-50)
 	Hud.add_payment_text(50, "Medical Bills")
 	Hud.timer.timer.stop()
 	Hud.timer._on_timer_timeout()
+
+func air_jump_poof():
+	play_air_jump()
+	var poof = AIR_JUMP_POOF.instantiate()
+	poof.global_position = global_position
+	get_tree().current_scene.call_deferred("add_child", poof)
+
+func play_jump():
+	jump_sound.pitch_scale = randf_range(0.9, 1.1)
+	jump_sound.play()
+
+func play_air_jump():
+	air_jump_sound.pitch_scale = 1 - float(air_jumps) * 0.1
+	air_jump_sound.play()
+
+func play_hurt():
+	hurt_sound.pitch_scale = randf_range(0.9, 1.1)
+	hurt_sound.play()
+
+func play_splash():
+	splash_sound.pitch_scale = randf_range(1.0, 1.2)
+	splash_sound.play()

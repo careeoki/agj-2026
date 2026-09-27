@@ -19,6 +19,7 @@ func reset_data():
 	Hud.payments.clear()
 	Hud.payments_label.text = ""
 	Hud.timer.timer.wait_time = 5.0
+	Hud.timer.additional_time = 0
 	player.reset_stat_changes()
 	for c in get_children():
 		c.queue_free()

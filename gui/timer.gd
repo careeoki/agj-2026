@@ -5,6 +5,7 @@ signal timer_timeout
 @onready var timer_icon: TextureRect = $TimerIcon
 @onready var time_label: Label = $TimeLabel
 @onready var timer: Timer = $Timer
+@onready var ding_sound: AudioStreamPlayer = $DingSound
 
 var additional_time: float = 0
 
@@ -24,6 +25,7 @@ func _on_timer_timeout() -> void:
 		return
 	Hud.shop.open_shop()
 	PlayerManager.return_player_to_spawn()
+	ding_sound.play()
 	
 
 func add_time(time_added: float):

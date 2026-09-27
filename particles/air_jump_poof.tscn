@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://b8r02rco7ph8b"]
+
+[ext_resource type="Texture2D" uid="uid://c5qbnmush26i8" path="res://assets/particles/small_poof.png" id="1_ly1a2"]
+[ext_resource type="Script" uid="uid://b5ccq3fmlhlxt" path="res://particles/one_shot_particle.gd" id="2_3og8q"]
+
+[sub_resource type="Curve" id="Curve_xbuoi"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6702128, 0.6516854), -1.5362614, -1.5362614, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="AirJumpPoof" type="CPUParticles2D" unique_id=752032529]
+z_index = 1
+emitting = false
+texture = ExtResource("1_ly1a2")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, -1)
+spread = 80.0
+gravity = Vector2(0, 5)
+initial_velocity_min = 100.0
+initial_velocity_max = 250.0
+damping_min = 100.0
+damping_max = 300.0
+scale_amount_curve = SubResource("Curve_xbuoi")
+script = ExtResource("2_3og8q")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

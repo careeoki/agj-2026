@@ -31,9 +31,9 @@ func physics_process(_delta: float) -> PlayerState:
 		return idle
 	if Input.is_action_pressed("jump"):
 		player.velocity.y -= player.target_swim_power
-	if player.velocity.y > 500:
-		player.velocity.y -= 10
-	else:
+	if player.velocity.y > 600:
+		player.velocity.y -= 20 
+	elif player.velocity.y < 1000:
 		player.velocity.y += player.target_gravity
 	if sign(direction.x) == sign(player.velocity.x) or player.velocity.x == 0:
 		current_accel = player.target_accel

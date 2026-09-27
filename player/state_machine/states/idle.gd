@@ -6,6 +6,7 @@ func init() -> void:
 	pass
 
 func enter() -> void:
+	player.sprite.play("idle")
 	player.air_jumps = player.max_air_jumps
 	pass
 

@@ -4,6 +4,7 @@ const SUBSCRIPTION_BOX = preload("uid://0ha7moh00yed")
 var max_size: int = 3
 var data: Array[Subscription]
 @onready var vbox: VBoxContainer = $VBoxContainer
+@onready var kaching_sound: AudioStreamPlayer = $KachingSound
 
 func _ready() -> void:
 	hide()
@@ -43,6 +44,7 @@ func update_inventory() -> void:
 
 
 func _on_subbed():
+	kaching_sound.play()
 	hide()
 	Hud.timer.start_timer()
 	PlayerManager.player_exit_cutscene()

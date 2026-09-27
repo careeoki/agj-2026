@@ -7,6 +7,7 @@ extends CanvasLayer
 @onready var game_over: VBoxContainer = $GameOver
 @onready var payments_box: VBoxContainer = $Control/VBoxContainer/PaymentsBox
 @onready var state_label: Label = $Control/StateLabel
+@onready var win: VBoxContainer = $Win
 
 var payments: Array[String]
 @export var b_offset: Vector2 = Vector2(0, 10)

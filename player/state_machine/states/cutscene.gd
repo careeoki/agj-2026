@@ -4,6 +4,7 @@ func init() -> void:
 	pass
 
 func enter() -> void:
+	player.sprite.play("idle")
 	player.velocity = Vector2.ZERO
 	pass
 

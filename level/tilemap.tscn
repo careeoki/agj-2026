@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dvx523s0nluq6" path="res://objects/red_coin.tscn" id="4_mbccy"]
 [ext_resource type="PackedScene" uid="uid://23up5hfenjpb" path="res://objects/blue_coin.tscn" id="5_mj54q"]
 [ext_resource type="PackedScene" uid="uid://c744vbyx0aacn" path="res://objects/time_pickup.tscn" id="5_ubvoq"]
+[ext_resource type="PackedScene" uid="uid://mn08iy4lbdn3" path="res://objects/purple_coin.tscn" id="6_4p3ha"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcpcr"]
 texture = ExtResource("1_cw3t1")
@@ -14,6 +15,8 @@ texture_region_size = Vector2i(128, 128)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:0/0 = 0
 1:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_x3j8w"]
 resource_name = "Coins"
@@ -21,6 +24,7 @@ scenes/1/scene = ExtResource("2_bcpcr")
 scenes/2/scene = ExtResource("3_x3j8w")
 scenes/3/scene = ExtResource("4_mbccy")
 scenes/4/scene = ExtResource("5_mj54q")
+scenes/5/scene = ExtResource("6_4p3ha")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mj54q"]
 resource_name = "Objects"
