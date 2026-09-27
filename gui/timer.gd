@@ -13,7 +13,8 @@ var additional_time: float = 0
 func _ready() -> void:
 	PlayerManager.data_reset.connect(_on_data_reset)
 	plus_time_label.hide()
-	timer.start()
+	if not get_tree().current_scene is CanvasLayer:
+		timer.start()
 
 func _process(_delta: float) -> void:
 	time_label.text = str(snapped(timer.time_left, 0.1))

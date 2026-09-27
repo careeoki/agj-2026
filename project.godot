@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="agj2026"
-run/main_scene="res://level/level.tscn"
+run/main_scene="uid://cuasg33hv3vyw"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 

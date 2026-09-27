@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://cuasg33hv3vyw"]
+
+[ext_resource type="Texture2D" uid="uid://863uegqegoyu" path="res://assets/subscription_conniption.png" id="1_7boow"]
+[ext_resource type="Script" uid="uid://dr8jtv467otmr" path="res://gui/title_screen.gd" id="1_l754q"]
+[ext_resource type="Texture2D" uid="uid://58ys8pf64jpk" path="res://assets/background/sky.png" id="2_nkjr3"]
+[ext_resource type="Texture2D" uid="uid://cfvldcm8e8gl5" path="res://assets/background/triangles.png" id="3_bp5sx"]
+[ext_resource type="Theme" uid="uid://504gxiuwede0" path="res://gui/theme.tres" id="3_sdkmq"]
+
+[node name="TitleScreen" type="CanvasLayer" unique_id=579241544]
+script = ExtResource("1_l754q")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=479029701]
+
+[node name="Parallax2D" type="Parallax2D" parent="Node2D" unique_id=582804847]
+scroll_scale = Vector2(0, 0)
+scroll_offset = Vector2(594, 0)
+repeat_size = Vector2(3000, 1800)
+repeat_times = 7
+
+[node name="TextureRect" type="Sprite2D" parent="Node2D/Parallax2D" unique_id=961159126]
+position = Vector2(0, 297)
+scale = Vector2(3, 3)
+texture = ExtResource("2_nkjr3")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Node2D" unique_id=1176500163]
+scroll_scale = Vector2(0.5, 0.5)
+scroll_offset = Vector2(774, 368)
+repeat_size = Vector2(256, 256)
+autoscroll = Vector2(25, 25)
+repeat_times = 11
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Parallax2D2" unique_id=2041279941]
+texture = ExtResource("3_bp5sx")
+
+[node name="Logo" type="TextureRect" parent="." unique_id=1490291587]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -292.9809
+offset_top = 63.0
+offset_right = 292.9809
+offset_bottom = 274.0
+grow_horizontal = 2
+texture = ExtResource("1_7boow")
+expand_mode = 1
+
+[node name="StartButton" type="Button" parent="." unique_id=2080039662]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -27.5
+offset_top = -150.0
+offset_right = 27.5
+offset_bottom = -119.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_sdkmq")
+text = "Start!!"
+
+[node name="Label" type="Label" parent="." unique_id=1196651488]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -123.5
+offset_top = -33.0
+offset_right = 123.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "created by careeoki for AGJ2026"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

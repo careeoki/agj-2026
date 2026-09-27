@@ -38,6 +38,7 @@ func _ready() -> void:
 	target_swim_power = default_swim_power
 	player_state_machine.init(self)
 	PlayerManager.player = self
+	Hud.timer.timer.start()
 	PlayerManager.spawn_pos = global_position
 
 func _physics_process(delta: float) -> void:
