@@ -3,7 +3,7 @@ class_name Player extends CharacterBody2D
 @onready var player_state_machine: PlayerStateMachine = $PlayerStateMachine
 
 @export var default_speed: float = 400
-@export var default_jump: float = 860
+@export var default_jump: float = 900
 @export var default_accel: float = 10
 @export var default_gravity: float = 40
 @export var default_swim_power: float = 10
@@ -43,21 +43,20 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
-func update_target_speed():
+func update_target_speed(): #this was not working correctly for the past few hours and i did not know.
 	target_speed = default_speed
 	target_accel = default_accel
-	target_jump = default_jump
+	#target_jump = default_jump
 	target_swim_power = default_swim_power
+	max_air_jumps = 0
 	for r in PlayerManager.sub_tags.count("run"):
-		target_speed += 200
+		target_speed += 100
 	for r in PlayerManager.sub_tags.count("extra_jump"):
 		max_air_jumps += 1
 	air_jumps = max_air_jumps
-	for j in PlayerManager.sub_tags.count("jump"):
-		if target_jump == 0:
-			target_jump += 840
-		else:
-			target_jump += 100
+	target_jump = default_jump + 100 * (PlayerManager.sub_tags.count("jump") - 1)
+	print(PlayerManager.sub_tags.count("jump"))
+		
 	for a in PlayerManager.sub_tags.count("accel"):
 		target_accel += 15
 	for s in PlayerManager.sub_tags.count("swim"):

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_rgimo")
-sub_name = "Extra Jump"
+sub_name = "Jump Cloud Storage"
 desc = "Allows you to jump again in the air. (If you can actually jump)"
 time = 2.0
 cost = 3

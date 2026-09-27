@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource("1_g7xrk")
-sub_name = "Acccerlrler"
-desc = "Increase your acceleration."
+sub_name = "Friction+"
+desc = "Increase your acceleration and deceleration."
 time = 1.2
 tag = "accel"
 metadata/_custom_type_script = "uid://d0usfiju7g5k0"

@@ -30,7 +30,7 @@ func _ready() -> void:
 			#coins_label.text = str(PlayerManager.money) + "$"
 
 
-func add_payment_text(cost: float, _name: String):
+func add_payment_text(cost: int, _name: String):
 	var new_payment: String = "\n-" + str(cost) + "$ (" + _name + ")"
 	payments.push_front(new_payment)
 	if payments.size() > 5:

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PlayerManager="*uid://b0nyupv0tudac"
 Hud="*uid://drgt0e4mhlfq0"
+Debug="*uid://dbiv64qaq2uvw"
 
 [display]
 

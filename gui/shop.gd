@@ -22,7 +22,8 @@ func create_shop_data():
 		
 		data_array.append(load(file_name))
 	
-	data_array.shuffle()
+	if max_size == 3:
+		data_array.shuffle()
 	if max_size > 0 and data_array.size() > max_size:
 		data_array.resize(max_size)
 	data = data_array

@@ -15,13 +15,14 @@ func _process(_delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:
+	timer_timeout.emit()
 	if PlayerManager.money < 0:
 		print("game over!")
 		Hud.game_over.open()
 		return
 	Hud.shop.open_shop()
 	PlayerManager.return_player_to_spawn()
-	timer_timeout.emit()
+	
 
 func add_time(time_added: float):
 	if timer.time_left == 0:

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_a8svk")
-sub_name = "Legs+"
+sub_name = "BootBox"
 desc = "Increases your speed."
 cost = 1
 tag = "run"

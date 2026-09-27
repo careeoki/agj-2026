@@ -27,6 +27,7 @@ func reset_data():
 func add_new_sub(data: Subscription):
 	if subscriptions.has(data):
 		subscriptions.get(subscriptions.find(data)).cost += data.cost
+		sub_tags.append(data.tag)
 	else:
 		subscriptions.append(data)
 		sub_tags.append(data.tag)

@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_4jd6v")
-sub_name = "FlipperBox"
+sub_name = "HelloFish"
 desc = "Learn to swim, and increase your swimming power."
 time = 3.0
 cost = 10
