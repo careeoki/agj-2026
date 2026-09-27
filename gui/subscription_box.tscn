@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://0ha7moh00yed"]
 
 [ext_resource type="Script" uid="uid://cicwu4peqv807" path="res://gui/subscription_box.gd" id="1_i1pnc"]
+[ext_resource type="Texture2D" uid="uid://cwhxxi8vma6d2" path="res://assets/gui/sub_icons/jump.png" id="2_d7xf8"]
 
 [node name="SubscriptionBox" type="PanelContainer" unique_id=862097918]
 anchors_preset = -1
@@ -14,19 +15,35 @@ metadata/_edit_use_anchors_ = true
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1735388491]
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="VBoxContainer" unique_id=1474052544]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=642537426]
+layout_mode = 2
+
+[node name="SubIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer" unique_id=328876741]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_d7xf8")
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=839702897]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1474052544]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Name"
 
-[node name="DescLabel" type="Label" parent="VBoxContainer" unique_id=138219252]
+[node name="DescLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=138219252]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Description"
 
-[node name="StatsLabel" type="Label" parent="VBoxContainer" unique_id=884836626]
+[node name="StatsLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=884836626]
+unique_name_in_owner = true
 layout_mode = 2
 text = "5$ every 0.1s"
 
 [node name="SubButton" type="Button" parent="VBoxContainer" unique_id=1474231210]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Subscribe!!!"
 

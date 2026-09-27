@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Subscription" format=3 uid="uid://c1i2krfwtu7ma"]
+
+[ext_resource type="Script" uid="uid://d0usfiju7g5k0" path="res://subscriptions/scripts/subscription.gd" id="1_g7xrk"]
+
+[resource]
+script = ExtResource("1_g7xrk")
+sub_name = "Acccerlrler"
+desc = "Increase your acceleration."
+time = 1.2
+tag = "accel"
+metadata/_custom_type_script = "uid://d0usfiju7g5k0"

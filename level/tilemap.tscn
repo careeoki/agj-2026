@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cdy0sljdcopnc" path="res://objects/coin.tscn" id="2_bcpcr"]
 [ext_resource type="PackedScene" uid="uid://vplgvsuhkpa3" path="res://objects/gold_coin.tscn" id="3_x3j8w"]
 [ext_resource type="PackedScene" uid="uid://dvx523s0nluq6" path="res://objects/red_coin.tscn" id="4_mbccy"]
+[ext_resource type="PackedScene" uid="uid://23up5hfenjpb" path="res://objects/blue_coin.tscn" id="5_mj54q"]
+[ext_resource type="PackedScene" uid="uid://c744vbyx0aacn" path="res://objects/time_pickup.tscn" id="5_ubvoq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bcpcr"]
 texture = ExtResource("1_cw3t1")
@@ -20,6 +22,11 @@ resource_name = "Coins"
 scenes/1/scene = ExtResource("2_bcpcr")
 scenes/2/scene = ExtResource("3_x3j8w")
 scenes/3/scene = ExtResource("4_mbccy")
+scenes/4/scene = ExtResource("5_mj54q")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_mj54q"]
+resource_name = "Objects"
+scenes/1/scene = ExtResource("5_ubvoq")
 
 [sub_resource type="TileSet" id="TileSet_xbuoi"]
 tile_size = Vector2i(128, 128)
@@ -27,6 +34,7 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_bcpcr")
 sources/2 = SubResource("TileSetScenesCollectionSource_x3j8w")
+sources/3 = SubResource("TileSetScenesCollectionSource_mj54q")
 
 [node name="Tilemap" type="TileMapLayer" unique_id=882706220]
 tile_set = SubResource("TileSet_xbuoi")

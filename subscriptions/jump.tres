@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_5lhsh")
 sub_name = "Jump"
-desc = "Allows you to jump!"
-cost = 5
+desc = "Increases your jump power."
+time = 1.5
 tag = "jump"
 metadata/_custom_type_script = "uid://d0usfiju7g5k0"

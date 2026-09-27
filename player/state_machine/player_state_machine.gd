@@ -40,7 +40,6 @@ func change_state(new_state: PlayerState) -> void:
 	states.push_front(new_state)
 	current_state.enter()
 	states.resize(3)
-	print(states)
 	
 	pass
 

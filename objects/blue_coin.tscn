@@ -1,26 +1,26 @@
-[gd_scene format=3 uid="uid://vplgvsuhkpa3"]
+[gd_scene format=3 uid="uid://23up5hfenjpb"]
 
-[ext_resource type="Script" uid="uid://gd6lb7d008t3" path="res://objects/scripts/coin.gd" id="1_6wq07"]
-[ext_resource type="Texture2D" uid="uid://dcq6pismuss62" path="res://assets/objects/coins.png" id="2_vu06g"]
-[ext_resource type="AudioStream" uid="uid://be5k674qiphc7" path="res://assets/sounds/coin.wav" id="3_vu06g"]
+[ext_resource type="Script" uid="uid://gd6lb7d008t3" path="res://objects/scripts/coin.gd" id="1_mgq6d"]
+[ext_resource type="Texture2D" uid="uid://dcq6pismuss62" path="res://assets/objects/coins.png" id="2_oxgq5"]
+[ext_resource type="AudioStream" uid="uid://be5k674qiphc7" path="res://assets/sounds/coin.wav" id="3_oxgq5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xbuoi"]
 radius = 42.107006
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1o7s2"]
-atlas = ExtResource("2_vu06g")
+atlas = ExtResource("2_oxgq5")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iwokp"]
-atlas = ExtResource("2_vu06g")
+atlas = ExtResource("2_oxgq5")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hyi47"]
-atlas = ExtResource("2_vu06g")
+atlas = ExtResource("2_oxgq5")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_osa5c"]
-atlas = ExtResource("2_vu06g")
+atlas = ExtResource("2_oxgq5")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xbuoi"]
@@ -43,9 +43,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="GoldCoin" type="Node2D" unique_id=1687651285]
-script = ExtResource("1_6wq07")
-value = 2
+[node name="BlueCoin" type="Node2D" unique_id=1687651285]
+script = ExtResource("1_mgq6d")
+value = 10
 
 [node name="Area2D" type="Area2D" parent="." unique_id=293510938]
 collision_layer = 0
@@ -55,13 +55,15 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_xbuoi")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=388475636]
-modulate = Color(0.9519157, 0.7966627, 0.3481993, 1)
-scale = Vector2(1.1, 1.1)
+modulate = Color(0.034972575, 0.45037723, 0.99999994, 1)
+scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_xbuoi")
 autoplay = "default"
+frame = 2
+frame_progress = 0.8730048
 
-[node name="Collect" type="AudioStreamPlayer2D" parent="." unique_id=2115434738]
-stream = ExtResource("3_vu06g")
-pitch_scale = 1.2
+[node name="Collect" type="AudioStreamPlayer2D" parent="." unique_id=196178286]
+stream = ExtResource("3_oxgq5")
+pitch_scale = 1.6
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

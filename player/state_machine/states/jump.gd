@@ -9,21 +9,20 @@ func init() -> void:
 	pass
 
 func enter() -> void:
-	if PlayerManager.sub_tags.has("run"):
-		target_speed = speed + 200
-	else:
-		target_speed = speed
-	print("J it")
-	player.velocity.y -= jump_velocity
+	player.velocity.y = -player.target_jump
+	player.sprite.scale = Vector2(0.7, 1.3)
 	pass
 
 func exit() -> void:
-	print("not J t")
 	pass
 
 func handle_input(_event: InputEvent) -> PlayerState:
 	if _event.is_action_released("jump"):
 		player.velocity.y *= 0.5
+	if _event.is_action_pressed("jump") and PlayerManager.sub_tags.has("extra_jump") and player.air_jumps > 0:
+		player.air_jumps -= 1
+		player.velocity.y = -player.target_jump * 0.8
+		player.sprite.scale = Vector2(0.7, 1.3)
 	return null
 
 func process(_delta: float) -> PlayerState:
@@ -31,7 +30,7 @@ func process(_delta: float) -> PlayerState:
 
 func physics_process(_delta: float) -> PlayerState:
 	player.velocity.y += 40
-	player.update_velocity(direction.x * target_speed, accel)
+	player.update_velocity(direction.x * player.target_speed, player.target_accel)
 	if player.velocity.y > 0:
 		return fall
 	return null

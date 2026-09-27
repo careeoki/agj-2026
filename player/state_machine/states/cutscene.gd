@@ -5,11 +5,9 @@ func init() -> void:
 
 func enter() -> void:
 	player.velocity = Vector2.ZERO
-	print("cut")
 	pass
 
 func exit() -> void:
-	print("uncut")
 	pass
 
 func handle_input(_event: InputEvent) -> PlayerState:

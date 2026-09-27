@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gd6lb7d008t3" path="res://objects/scripts/coin.gd" id="1_rpaau"]
 [ext_resource type="Texture2D" uid="uid://dcq6pismuss62" path="res://assets/objects/coins.png" id="2_ao8wv"]
+[ext_resource type="AudioStream" uid="uid://be5k674qiphc7" path="res://assets/sounds/coin.wav" id="3_ao8wv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xbuoi"]
 radius = 42.107006
@@ -60,5 +61,9 @@ sprite_frames = SubResource("SpriteFrames_xbuoi")
 autoplay = "default"
 frame = 2
 frame_progress = 0.8730048
+
+[node name="Collect" type="AudioStreamPlayer2D" parent="." unique_id=1223358830]
+stream = ExtResource("3_ao8wv")
+pitch_scale = 1.4
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -6,11 +6,9 @@ func init() -> void:
 	pass
 
 func enter() -> void:
-	print("idling it")
 	pass
 
 func exit() -> void:
-	print("not idliingi t")
 	pass
 
 func handle_input(_event: InputEvent) -> PlayerState:
@@ -23,7 +21,7 @@ func process(_delta: float) -> PlayerState:
 	return null
 
 func physics_process(_delta: float) -> PlayerState:
-	player.update_velocity(0, decel)
+	player.update_velocity(0, player.target_accel * 1.2)
 	if direction.x:
 		return walk
 	if not player.is_on_floor():

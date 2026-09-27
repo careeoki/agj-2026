@@ -12,16 +12,10 @@ func init() -> void:
 	pass
 
 func enter() -> void:
-	if PlayerManager.sub_tags.has("run"):
-		target_speed = speed + 200
-	else:
-		target_speed = speed
 	current_accel = accel
-	print("WA it")
 	pass
 
 func exit() -> void:
-	print("not WA t")
 	pass
 
 func handle_input(_event: InputEvent) -> PlayerState:
@@ -38,9 +32,9 @@ func physics_process(_delta: float) -> PlayerState:
 	if !direction.x:
 		return idle
 	elif sign(direction.x) == sign(player.velocity.x) or player.velocity.x == 0:
-		current_accel = accel
+		current_accel = player.target_accel
 	else:
-		current_accel = skid_accel
+		current_accel = player.target_accel * 2
 	
-	player.update_velocity(direction.x * target_speed, current_accel)
+	player.update_velocity(direction.x * player.target_speed, current_accel)
 	return null

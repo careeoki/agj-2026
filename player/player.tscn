@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ccdsbc42d2ukj"]
 
-[ext_resource type="Texture2D" uid="uid://bknlb75hw4utg" path="res://icon.svg" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://cmopi5khs5y01" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Texture2D" uid="uid://ck7afhugtsver" path="res://assets/player/idle.png" id="2_rgyib"]
 [ext_resource type="Script" uid="uid://b72b1nb2iwrqx" path="res://player/state_machine/player_state_machine.gd" id="3_g1dw6"]
 [ext_resource type="Script" uid="uid://mesvvpsk5vvc" path="res://player/state_machine/states/idle.gd" id="4_yw30f"]
 [ext_resource type="Script" uid="uid://cb7u5w3k6j4rq" path="res://player/state_machine/states/walk.gd" id="5_qjkh3"]
@@ -17,18 +17,21 @@ collision_layer = 2
 script = ExtResource("1_rkbax")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=400059122]
-texture = ExtResource("1_oul6g")
+z_index = 1
+position = Vector2(0, 64)
+texture = ExtResource("2_rgyib")
+offset = Vector2(0, -75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=990100114]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_xbuoi")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1042612041]
+position = Vector2(0, -245)
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
-position_smoothing_speed = 15.0
-drag_vertical_enabled = true
-drag_top_margin = 1.0
+position_smoothing_speed = 12.0
+drag_top_margin = 0.6
 drag_right_margin = 1.0
 
 [node name="PlayerStateMachine" type="Node2D" parent="." unique_id=162832397]
@@ -45,14 +48,13 @@ script = ExtResource("5_rgyib")
 [node name="Walk" type="Node2D" parent="PlayerStateMachine" unique_id=2056285377]
 unique_name_in_owner = true
 script = ExtResource("5_qjkh3")
-speed = 450.0
 accel = 30.0
 skid_accel = 60.0
 
 [node name="Jump" type="Node2D" parent="PlayerStateMachine" unique_id=55547843]
 unique_name_in_owner = true
 script = ExtResource("6_boad6")
-jump_velocity = 900.0
+jump_velocity = 860.0
 
 [node name="Fall" type="Node2D" parent="PlayerStateMachine" unique_id=351093516]
 unique_name_in_owner = true

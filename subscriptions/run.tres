@@ -5,8 +5,7 @@
 [resource]
 script = ExtResource("1_a8svk")
 sub_name = "Legs+"
-desc = "You can operate your legs better, increasing your speed!"
-time = 0.5
-cost = 5
+desc = "Increases your speed."
+cost = 1
 tag = "run"
 metadata/_custom_type_script = "uid://d0usfiju7g5k0"
