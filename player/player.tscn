@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://rm63cfgtcaxb" path="res://assets/sounds/air_jump.wav" id="12_ebec5"]
 [ext_resource type="AudioStream" uid="uid://b4rqnvps8ptvn" path="res://assets/sounds/hurt.wav" id="13_yllr7"]
 [ext_resource type="AudioStream" uid="uid://57yxij51i32l" path="res://assets/sounds/splash.wav" id="15_wodsf"]
+[ext_resource type="AudioStream" uid="uid://d5vj1ap0itf5" path="res://assets/sounds/dash.wav" id="16_32hag"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xbuoi"]
 animations = [{
@@ -117,17 +118,26 @@ shape = SubResource("CircleShape2D_xbuoi")
 
 [node name="JumpSound" type="AudioStreamPlayer2D" parent="." unique_id=72681925]
 stream = ExtResource("11_2ieo8")
+bus = &"Sounds"
 
 [node name="AirJumpSound" type="AudioStreamPlayer2D" parent="." unique_id=1028188553]
 stream = ExtResource("12_ebec5")
+bus = &"Sounds"
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=1837295370]
 stream = ExtResource("13_yllr7")
 volume_db = 6.0
+bus = &"Sounds"
 
 [node name="SplashSound" type="AudioStreamPlayer2D" parent="." unique_id=435272867]
 stream = ExtResource("15_wodsf")
 volume_db = -4.0
+bus = &"Sounds"
+
+[node name="DashSound" type="AudioStreamPlayer2D" parent="." unique_id=1822254148]
+stream = ExtResource("16_32hag")
+volume_db = 20.0
+bus = &"Sounds"
 
 [connection signal="body_entered" from="WaterCheck" to="." method="_on_water_check_body_entered"]
 [connection signal="body_exited" from="WaterCheck" to="." method="_on_water_check_body_exited"]

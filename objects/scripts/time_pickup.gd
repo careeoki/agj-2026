@@ -2,6 +2,7 @@ extends Node2D
 
 @export var time_added: float = 5.0
 @onready var area_2d: Area2D = $Area2D
+@onready var get_sound: AudioStreamPlayer2D = $GetSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -14,6 +15,7 @@ func _ready() -> void:
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	area_2d.set_deferred("monitoring", false)
 	Hud.timer.add_time(time_added)
+	get_sound.play()
 	hide()
 
 func _on_data_reset():

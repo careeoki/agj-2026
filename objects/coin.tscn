@@ -60,5 +60,6 @@ autoplay = "default"
 
 [node name="Collect" type="AudioStreamPlayer2D" parent="." unique_id=1295560026]
 stream = ExtResource("3_1o7s2")
+bus = &"Sounds"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -3,15 +3,22 @@ const SUBSCRIPTION_BOX = preload("uid://0ha7moh00yed")
 
 var max_size: int = 3
 var data: Array[Subscription]
-@onready var vbox: VBoxContainer = $VBoxContainer
+@onready var vbox: VBoxContainer = %VBoxContainer
 @onready var kaching_sound: AudioStreamPlayer = $KachingSound
+@onready var subs_label: Label = %SubsLabel
 
 func _ready() -> void:
 	hide()
+	subs_label.get_parent().hide()
 	create_shop_data()
 
 func open_shop():
 	create_shop_data()
+	var subs_text: String = "Your Subscriptions:"
+	for s in PlayerManager.subscriptions:
+		subs_text += "\n" + s.data.sub_name + ": " + str(PlayerManager.sub_tags.count(s.data.tag))
+	subs_label.text = subs_text
+	subs_label.get_parent().show()
 	show()
 
 func create_shop_data():
@@ -46,5 +53,6 @@ func update_inventory() -> void:
 func _on_subbed():
 	kaching_sound.play()
 	hide()
+	subs_label.get_parent().hide()
 	Hud.timer.start_timer()
 	PlayerManager.player_exit_cutscene()

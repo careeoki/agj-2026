@@ -9,6 +9,7 @@ func init() -> void:
 	pass
 
 func enter() -> void:
+	player.play_dash()
 	if player.velocity.y > 0:
 		player.velocity.y = 0
 	player.velocity.x = (player.target_speed + player.target_dash) * direction.x

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dmbp6okprpk5j"]
+
+[ext_resource type="AudioStream" uid="uid://b4oya6f7bqloq" path="res://assets/music/skateboardin.wav" id="1_6cpxb"]
+[ext_resource type="Script" uid="uid://bwfnpylpdfuxn" path="res://MusicPlayer.gd" id="2_ghq50"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" unique_id=1028028001]
+stream = ExtResource("1_6cpxb")
+bus = &"Music"
+script = ExtResource("2_ghq50")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

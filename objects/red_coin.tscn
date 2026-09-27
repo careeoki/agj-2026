@@ -65,5 +65,6 @@ frame_progress = 0.8730048
 [node name="Collect" type="AudioStreamPlayer2D" parent="." unique_id=1223358830]
 stream = ExtResource("3_ao8wv")
 pitch_scale = 1.4
+bus = &"Sounds"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

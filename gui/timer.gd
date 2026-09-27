@@ -6,11 +6,13 @@ signal timer_timeout
 @onready var time_label: Label = $TimeLabel
 @onready var timer: Timer = $Timer
 @onready var ding_sound: AudioStreamPlayer = $DingSound
+@onready var plus_time_label: Label = $"../PlusTimeLabel"
 
 var additional_time: float = 0
 
 func _ready() -> void:
 	PlayerManager.data_reset.connect(_on_data_reset)
+	plus_time_label.hide()
 	timer.start()
 
 func _process(_delta: float) -> void:
@@ -37,6 +39,7 @@ func add_time(time_added: float):
 	timer.stop()
 	timer.start()
 	timer.wait_time = new_time
+	plus_time_anim()
 	
 func _on_data_reset():
 	timer.start()
@@ -44,3 +47,9 @@ func _on_data_reset():
 func start_timer():
 	timer.wait_time = 5 + additional_time
 	timer.start()
+
+func plus_time_anim():
+	plus_time_label.show()
+	await get_tree().create_timer(2).timeout
+	plus_time_label.hide()
+	

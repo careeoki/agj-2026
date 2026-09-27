@@ -59,7 +59,11 @@ grow_vertical = 2
 horizontal_scroll_mode = 0
 script = ExtResource("2_u7rvv")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Shop" unique_id=252968016]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/Shop" unique_id=362665492]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Shop/VBoxContainer2" unique_id=252968016]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -67,6 +71,17 @@ size_flags_vertical = 3
 [node name="KachingSound" type="AudioStreamPlayer" parent="Control/Shop" unique_id=1667999059]
 stream = ExtResource("3_b4ae6")
 volume_db = -2.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=1456915429]
+layout_mode = 0
+offset_left = 883.0
+offset_top = 231.0
+offset_right = 947.0
+offset_bottom = 271.0
+
+[node name="SubsLabel" type="Label" parent="Control/PanelContainer" unique_id=1437790639]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="Timer" type="HBoxContainer" parent="Control" unique_id=1094354335]
 layout_mode = 1
@@ -102,6 +117,22 @@ offset_left = 889.0
 offset_top = 6.0
 offset_right = 929.0
 offset_bottom = 29.0
+
+[node name="PlusTimeLabel" type="Label" parent="Control" unique_id=1690343790]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -264.0
+offset_right = 107.0
+offset_bottom = -241.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 22
+text = "+5s MAX TIME!"
 
 [node name="GameOver" type="VBoxContainer" parent="." unique_id=946107376]
 visible = false

@@ -1,11 +1,13 @@
 class_name Player extends CharacterBody2D
 const AIR_JUMP_POOF = preload("uid://b8r02rco7ph8b")
+const JUMP_POOF = preload("uid://4hutrfi2nc7k")
 
 @onready var player_state_machine: PlayerStateMachine = $PlayerStateMachine
 @onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 @onready var air_jump_sound: AudioStreamPlayer2D = $AirJumpSound
 @onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
 @onready var splash_sound: AudioStreamPlayer2D = $SplashSound
+@onready var dash_sound: AudioStreamPlayer2D = $DashSound
 
 @export var default_speed: float = 450
 @export var default_jump: float = 850
@@ -98,14 +100,14 @@ func reset_stat_changes():
 
 func _on_water_check_body_entered(_body: Node2D) -> void:
 	print("in water")
-	splash_sound.play()
+	
 	if PlayerManager.sub_tags.has("swim"):
 		underwater = true
 		player_state_machine.change_state(player_state_machine.states[0].swim)
 		target_gravity = 5
 	else:
 		die()
-
+	splash_sound.play()
 
 func _on_water_check_body_exited(_body: Node2D) -> void:
 	target_gravity = default_gravity
@@ -128,6 +130,11 @@ func air_jump_poof():
 	poof.global_position = global_position
 	get_tree().current_scene.call_deferred("add_child", poof)
 
+func jump_poof():
+	var poof = JUMP_POOF.instantiate()
+	poof.global_position = sprite.global_position
+	get_tree().current_scene.call_deferred("add_child", poof)
+
 func play_jump():
 	jump_sound.pitch_scale = randf_range(0.9, 1.1)
 	jump_sound.play()
@@ -143,3 +150,7 @@ func play_hurt():
 func play_splash():
 	splash_sound.pitch_scale = randf_range(1.0, 1.2)
 	splash_sound.play()
+
+func play_dash():
+	dash_sound.pitch_scale = randf_range(1.0, 1.2)
+	dash_sound.play()

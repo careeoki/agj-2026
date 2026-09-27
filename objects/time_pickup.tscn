@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cr0g6yh2mgtet" path="res://objects/scripts/time_pickup.gd" id="1_gu4xh"]
 [ext_resource type="Texture2D" uid="uid://bejrbk0x6dqkv" path="res://assets/gui/timer.png" id="1_ng5ja"]
+[ext_resource type="AudioStream" uid="uid://ocripqucdl67" path="res://assets/sounds/time_up.wav" id="3_nxihj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gu4xh"]
 radius = 42.107006
@@ -18,5 +19,10 @@ shape = SubResource("CircleShape2D_gu4xh")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1889485862]
 texture = ExtResource("1_ng5ja")
+
+[node name="GetSound" type="AudioStreamPlayer2D" parent="." unique_id=173986537]
+stream = ExtResource("3_nxihj")
+volume_db = 10.0
+bus = &"Sounds"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

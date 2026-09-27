@@ -63,5 +63,6 @@ autoplay = "default"
 [node name="Collect" type="AudioStreamPlayer2D" parent="." unique_id=2115434738]
 stream = ExtResource("3_vu06g")
 pitch_scale = 1.2
+bus = &"Sounds"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

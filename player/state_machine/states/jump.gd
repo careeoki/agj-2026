@@ -9,6 +9,7 @@ func init() -> void:
 	pass
 
 func enter() -> void:
+	player.jump_poof()
 	player.sprite.play("jump")
 	player.play_jump()
 	player.velocity.y = -player.target_jump
